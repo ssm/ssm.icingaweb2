@@ -1,20 +1,31 @@
 ---
 dependency:
   name: galaxy
+  options:
+    force: false
 driver:
   name: docker
 lint:
   name: yamllint
 platforms:
-  - name: instance
-    image: centos:7
+  - name: icingaweb2
+    image: centos/systemd
+    privileged: true
+    command: /usr/sbin/init
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  inventory:
+    host_vars:
+      monitor:
+        icinga2_zone: master
+        icinga2_role: master
 scenario:
   name: default
 verifier:
   name: testinfra
+  options:
+    verbose: true
   lint:
     name: flake8
