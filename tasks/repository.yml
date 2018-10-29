@@ -1,0 +1,11 @@
+---
+- name: Import signing key
+  rpm_key:
+    key: "{{ icingaweb2_key_url }}"
+    state: present
+
+- name: Enable repository
+  yum_repository:
+    name: icinga
+    description: Icinga YUM repo
+    baseurl: https://packages.icinga.com/epel/$releasever/release/
