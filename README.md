@@ -1,14 +1,19 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role will install icingaweb2. It will by default add the icinga repo to
+your yum sources.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+Packages from the Software Collections repository must be available. This
+module does not enable this repository.
+
+* On RHEL 7, install rhel-server-rhscl-7-rpms
+
+* On CentOS 7, install centos-release-scl
+
 
 Role Variables
 --------------
